@@ -1,5 +1,11 @@
 import React from 'react';
 import './Footer.css';
+import logofb from '../social/facebook-white.svg';
+import logotw from '../social/twitter-white.svg';
+import logoin from '../social/instagram-white.svg';
+import logoae from '../store/app-store.svg';
+import logogp from '../store/play-store.svg';
+import logomi from '../store/windows-store.svg';
 
 const Footer = () => {
     return (
@@ -11,11 +17,15 @@ const Footer = () => {
                 Copyright © 2016 DEMO Streaming. All Rights Reserved.
             </div>
             <div className='imagenes'>
-                <div className='container1'>
-                    
+                <div className='imagenes1'>
+                    <img src ={ logofb } alt='Logo Facebook'/>
+                    <img src ={ logotw } alt='Logo Twiter'/>
+                    <img src ={ logoin } alt='Logo Instagram'/>
                 </div>
-                <div className='container2'>
-                
+                <div className='imagenes2'>
+                    <img src ={ logoae } alt='Logo App Store'/>
+                    <img src ={ logogp } alt='Logo Play Store'/>
+                    <img src ={ logomi } alt='Logo Windows Store'/>
                 </div>
             </div>
         </div>

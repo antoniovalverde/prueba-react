@@ -1,0 +1,24 @@
+.cartelito{
+	width: 12em;
+	padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;	
+}
+
+.cartelito > img {
+	height: 15em;
+	width: 10em;
+	transition: opacity 0.5s, border-style 0.5s;
+}
+
+.cartelito > img:hover{
+	opacity: 50%;
+	border-style: outset;
+}
+
+.titlePoster{
+	font-weight:bold;
+	width: 10em;
+  }

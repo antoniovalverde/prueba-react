@@ -1,9 +1,10 @@
 import React from 'react';
 import Peli from './Peli';
+import './Peliculas.css';
 
 const Peliculas = ({ peliculas }) => {
   return (
-    <div>
+    <div className='muestra'>
       {
         peliculas.map((peli, i) => {
           return (
@@ -12,6 +13,7 @@ const Peliculas = ({ peliculas }) => {
               titulo={peliculas[i].title}
               descripcion={peliculas[i].description}
               year={peliculas[i].releaseYear}
+              poster={peliculas[i].images}
               />
           );
         })

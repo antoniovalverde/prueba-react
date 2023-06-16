@@ -1,13 +1,11 @@
 import React from 'react';
+import './Peli.css';
 
-const Peli = ({ titulo, descripcion, year }) => {
+const Peli = ({ titulo, descripcion, year, poster }) => {
   return (
     <div className='cartelito'>
-      <div>
-        <h2>{titulo}</h2>
-        <p>{descripcion}</p>
-        <h3>{year}</h3>
-      </div>
+      <img src ={ poster['Poster Art'].url } alt='cartel'/>
+      <div className='titlePoster'>{titulo}</div>
     </div>
   );
 }

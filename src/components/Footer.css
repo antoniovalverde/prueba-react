@@ -1,8 +1,8 @@
 .pie{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 0% 10%;
+    /*position: fixed;
+    bottom: 0;*/
+    width: 80%;
+    padding: 2% 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,7 +15,27 @@
 }
 
 .imagenes{
+    padding-top: 2%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
+
+.imagenes1, .imagenes2{
+    background: none;
+    display:flex;
+    flex-direction: row;
+}
+
+.imagenes2>img{
+    height: 3em;
+    margin: 2%;
+}
+
+.imagenes1>img{
+    height: 2em;
+    margin: 15%;
+}
+
+

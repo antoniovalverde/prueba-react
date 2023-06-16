@@ -1,36 +1,65 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Menu from '../components/Menu';
 import Peliculas from '../components/Peliculas';
+import Scroll from '../components/Scroll';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      peliculas: []
+function App(){
+
+  const [peliculas, setPeliculas] = useState([]);
+  const [route, setRoute] = useState('home');
+  const [listado, setListado] = useState();
+
+
+
+  useEffect(() => {
+    cargarDatos();
+  });
+
+  const onRouteChange = (ruta) => {
+    let filt, filtro;
+
+    if(ruta === 'series'){
+      filt = peliculas.filter(peli =>
+        peli.releaseYear >= 2010 && peli.programType === 'series'
+      ); 
+      filt.sort((x, y) => x.title.localeCompare(y.title));
+      filtro = filt.slice(0, 20);
+    }else if(ruta === 'peliculas'){
+      filt = peliculas.filter(peli =>
+        peli.releaseYear >= 2010 && peli.programType === 'movie'
+      );
+      filt.sort((x, y) => x.title.localeCompare(y.title));
+      filtro = filt.slice(0, 20);
     }
+    setRoute(ruta);
+    setListado(filtro);
   }
 
-  componentDidMount() {
+  const cargarDatos = () => {
     fetch('https://raw.githubusercontent.com/StreamCo/react-coding-challenge/master/feed/sample.json')
       .then(response=> response.json())
-      .then(pelis => {this.setState({ peliculas: pelis.entries})});
+      .then(pelis => {setPeliculas(pelis.entries)});
   }
 
-  render() {
-    const { peliculas } = this.state;
-
-    return !peliculas.length ?
-      <h1>Loading</h1> :
-      (
-        <div>
-          <Header />
-          <Peliculas peliculas={ peliculas }/>
-          <Footer />
-        </div>
-      );
-  }
+  return (
+    <div>
+      <Header />
+      <Scroll>
+      { route === 'home' ?
+        <Menu onRouteChange={onRouteChange} /> 
+        : (
+            route === 'series'
+            ? <Peliculas peliculas={ listado } />
+            : <Peliculas peliculas={ listado } />
+          )
+      }
+      </Scroll>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
