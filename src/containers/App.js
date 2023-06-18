@@ -28,6 +28,7 @@ function App(){
   }, [route]);
 
   const onRouteChange = (ruta) => {
+    setError(null);
     setRoute(ruta);
     setCargando(true);
   }
