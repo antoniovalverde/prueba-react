@@ -14,12 +14,21 @@
     margin: 0.5%;
 }
 
+.atajos:hover{
+    cursor:pointer;
+}
+
+.copyright{
+    cursor: default;
+}
+
 .imagenes{
     padding-top: 2%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .imagenes1, .imagenes2{

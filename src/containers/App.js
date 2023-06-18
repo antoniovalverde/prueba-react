@@ -11,37 +11,47 @@ function App(){
   const [peliculas, setPeliculas] = useState([]);
   const [route, setRoute] = useState('home');
   const [listado, setListado] = useState();
-
-
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     cargarDatos();
-  });
+    let filt, filtro;
+    filt = peliculas.filter(peli =>
+      peli.releaseYear >= 2010 && peli.programType === route
+    );
+    filt.sort((x, y) => x.title.localeCompare(y.title));
+    filtro = filt.slice(0, 20);
+
+    setListado(filtro); 
+    setCargando(false); 
+  }, [route]);
 
   const onRouteChange = (ruta) => {
-    let filt, filtro;
-
-    if(ruta === 'series'){
-      filt = peliculas.filter(peli =>
-        peli.releaseYear >= 2010 && peli.programType === 'series'
-      ); 
-      filt.sort((x, y) => x.title.localeCompare(y.title));
-      filtro = filt.slice(0, 20);
-    }else if(ruta === 'peliculas'){
-      filt = peliculas.filter(peli =>
-        peli.releaseYear >= 2010 && peli.programType === 'movie'
-      );
-      filt.sort((x, y) => x.title.localeCompare(y.title));
-      filtro = filt.slice(0, 20);
-    }
     setRoute(ruta);
-    setListado(filtro);
+    setCargando(true);
   }
 
   const cargarDatos = () => {
     fetch('https://raw.githubusercontent.com/StreamCo/react-coding-challenge/master/feed/sample.json')
-      .then(response=> response.json())
-      .then(pelis => {setPeliculas(pelis.entries)});
+      .then((response) => {
+        if(response.ok){
+          response.json()
+          .then(pelis => {setPeliculas(pelis.entries)})
+        }else{
+          setError(true);
+        }
+      })
+  }
+
+  const onOpenDialog = (id) => {
+    let dialogo = document.getElementById('modal' + id);
+    dialogo.show();
+  }
+
+  const onCloseDialog = (id) => {
+    let dialogo = document.getElementById('modal' + id);
+    dialogo.close();
   }
 
   return (
@@ -51,9 +61,17 @@ function App(){
       { route === 'home' ?
         <Menu onRouteChange={onRouteChange} /> 
         : (
-            route === 'series'
-            ? <Peliculas peliculas={ listado } />
-            : <Peliculas peliculas={ listado } />
+            cargando === true
+            ? <div className='cargando'>
+                <span>Loading...</span>
+              </div>
+            : (
+                error === true
+                ? <div className='cargando'>
+                    <span>Oops, something went wrong...</span>
+                  </div>
+                : <Peliculas peliculas={ listado } onOpenDialog={onOpenDialog} onCloseDialog={onCloseDialog} />
+            )
           )
       }
       </Scroll>

@@ -11,7 +11,7 @@ const Menu = ({ onRouteChange }) => {
                 <small className='textinfo'>Popular Series</small>
            </div>
            <div className='seleccion'>
-                <div onClick={() => onRouteChange('peliculas')} className='boton'>
+                <div onClick={() => onRouteChange('movie')} className='boton'>
                     <h1>MOVIES</h1>
                 </div>
                 <small className='textinfo'>Popular Movies</small>
