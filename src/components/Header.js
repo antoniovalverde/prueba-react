@@ -1,12 +1,12 @@
 import React from 'react';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ onRouteChange }) => {
     return (
         <div className='cabecera'>
             <div className='container1'>
                 <div className='titulo'>
-                    <h1>DEMO Streaming</h1>
+                    <h1 className='demoTitle' onClick={() => onRouteChange('home')}>DEMO Streaming</h1>
                 </div>
                 <div className='part2'>
                     <div className='btn1'>

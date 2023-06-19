@@ -12,7 +12,7 @@ To run the project:
 
 ¿Hay alguna mejora que pueda hacer en su envío?
 
-* Muchas, terminar de implementar todas las peticiones opcionales, a la par que añadir ruteo con react-router de las diferentes páginas. Por otro lado, entre las librerías, añadiría una para controlar modales ya que he resuelto el popup con la opción más fácil y rápida(forma nativa) pero tiene como contra que puede llamarlos en cascada, con todo lo que eso conlleva. También se podría mejorar el diseño con algunas librerías adicionales y añadir un botón para volver al menú principal que no se pedía... O:)
+* Muchas, terminar de implementar todas las peticiones opcionales, a la par que añadir ruteo con react-router de las diferentes páginas. Por otro lado, entre las librerías, añadiría una para controlar modales ya que he resuelto el popup con la opción más fácil y rápida(forma nativa) pero tiene como contra que puede llamarlos en cascada, con todo lo que eso conlleva. También se podría mejorar el diseño con algunas librerías adicionales y añadir un botón para volver al menú principal que no se pedía (se puede hacer pulsando en el título del encabezado que indica "DEMO Streaming")... O:)
 
 ¿Qué haría de manera diferente si se le asignara más tiempo?
 

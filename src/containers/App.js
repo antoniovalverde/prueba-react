@@ -57,7 +57,7 @@ function App(){
 
   return (
     <div>
-      <Header />
+      <Header onRouteChange={onRouteChange} />
       <Scroll>
       { route === 'home' ?
         <Menu onRouteChange={onRouteChange} /> 
